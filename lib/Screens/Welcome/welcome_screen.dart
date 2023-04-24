@@ -2,14 +2,22 @@ import 'package:flutter/material.dart';
 
 import '../../components/background.dart';
 import '../../responsive.dart';
+
+import '../Permission_manager/permission_code.dart';
 import 'components/login_signup_btn.dart';
 import 'components/welcome_image.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
 
+  void _checkPermissions() async {
+    await requestStoragePermission();
+  }
+
   @override
   Widget build(BuildContext context) {
+    // Call the function here
+    _checkPermissions();
     return Background(
       child: SingleChildScrollView(
         child: SafeArea(

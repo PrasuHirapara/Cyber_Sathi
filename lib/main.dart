@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'Screens/Welcome/welcome_screen.dart';
 import 'constants.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+
+  // Initializes Firebase
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  // Runs the app
   runApp(const MyApp());
 }
 
@@ -40,6 +47,7 @@ class MyApp extends StatelessWidget {
             ),
           )),
       home: WelcomeScreen(),
+
     );
   }
 }
