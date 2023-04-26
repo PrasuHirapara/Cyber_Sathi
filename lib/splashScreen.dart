@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:cyber_sathi/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'main.dart';
@@ -14,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Timer(const Duration(milliseconds: 3500), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage(title: "Cyber Sathi")));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
     });
   }
 

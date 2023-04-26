@@ -3,7 +3,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 Future<void> requestStoragePermission() async {
 
-  final androidConfig = const FlutterBackgroundAndroidConfig(
+  const androidConfig = FlutterBackgroundAndroidConfig(
     notificationTitle: "Background app example",
     notificationText: "Background app is running",
     notificationImportance: AndroidNotificationImportance.Default,
