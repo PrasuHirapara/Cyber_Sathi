@@ -20,18 +20,19 @@ Future<void> requestStoragePermission() async {
   if (statusStorage.isGranted && statusLocation.isGranted) {
     // Permission is granted
     print('Storage and location permissions granted');
-  } else if (statusStorage.isPermanentlyDenied || statusLocation.isPermanentlyDenied) {
+  }else if (statusStorage.isPermanentlyDenied || statusLocation.isPermanentlyDenied) {
     // Permission is permanently denied
     print('Storage or location permissions permanently denied');
     //openAppSettings();
-  } else {
+  }else {
     // Permission is denied
     print('Storage or location permissions denied');
 
     bool isBackgroundExecutionEnabled = await FlutterBackground.isBackgroundExecutionEnabled;
-    if (isBackgroundExecutionEnabled) {
+
+    if(isBackgroundExecutionEnabled) {
       // Background execution is enabled
-    } else {
+    }else {
       // Background execution is not enabled
     }
 

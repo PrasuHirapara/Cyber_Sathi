@@ -1,8 +1,7 @@
 import 'dart:async';
-import 'package:cyber_sathi/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'main.dart';
+import 'Layouts/HomePage.dart';
 
 class SplashScreen extends StatefulWidget{
   @override
@@ -22,26 +21,20 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.tealAccent,
+      backgroundColor: Colors.cyanAccent,
       body: Container(
         child: Column(
           children: [
-
             // Lottie Animation
-            Padding(
-              padding: const EdgeInsets.only(top: 60),
-              child: Container(
-                width: double.infinity,
-                height: 400,
-                child: Lottie.asset('assets/animation/cyberSplash.json'),
-              ),
+            const SizedBox(height: 30,),
+            Container(
+              width: double.infinity,
+              height: 400,
+              child: Lottie.asset('assets/animation/cyberSplash.json'),
             ),
-
-            // App name
-            const Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Center(child: Text("Cyber Sathi",style: TextStyle(fontSize: 40,fontWeight: FontWeight.bold),)),
-            ),
+            const Center(child: Text("Cyber Sathi",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,),)),
+            SizedBox(height: 10,),
+            const Center(child: Text("Stay safe",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
           ],
         ),
       ),
