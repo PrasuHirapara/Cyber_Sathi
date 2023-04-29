@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "813033926119",
+    "project_id": "cyber-sathi-2ef12",
+    "storage_bucket": "cyber-sathi-2ef12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:813033926119:android:47255471ba09200240e142",
+        "android_client_info": {
+          "package_name": "com.app.cyber_sathi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "813033926119-1voq94l8983m8041n3v0agbqsvathdlm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.cyber_sathi",
+            "certificate_hash": "bb9ffe3beefff8bd1dd0c330bb2a191b4eb2bb61"
+          }
+        },
+        {
+          "client_id": "813033926119-2mul2v4g9gho4hrv73p7908qlch09on3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSGiJC4S0vmLI7jEGHOvZ8omtcwYRcdms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "813033926119-2mul2v4g9gho4hrv73p7908qlch09on3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

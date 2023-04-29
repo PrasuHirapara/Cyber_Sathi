@@ -1,19 +1,20 @@
-import 'package:cyber_sathi/auth/ForgotPassword.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cyber_sathi/Layouts/HomePage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-import '../Layouts/HomePage.dart';
-import 'SignUpPage.dart';
-
-class LoginPage extends StatefulWidget{
+class ForgotPassword extends StatefulWidget{
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<ForgotPassword> createState() => _ForgotPasswordState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  bool obscurePassword = true;
+class _ForgotPasswordState extends State<ForgotPassword> {
+  String text_msg = "";
+  String btn_msg = "send otp";
+  bool OTP_sent = false;
+
   final userIdController = TextEditingController();
-  final passwordController = TextEditingController();
+
+  final OTP_Controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +27,12 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 120,),
 
               // App Logo
-              const Icon(Icons.lock,size: 50),
+              const Icon(Icons.login_outlined,size: 50),
 
               const SizedBox(height: 25,),
 
               // Welcome
-              Text("Welcome",style: TextStyle(color: Colors.grey[700],fontSize: 16,fontWeight: FontWeight.bold),),
+              Text("Login via OTP",style: TextStyle(color: Colors.grey[700],fontSize: 16,fontWeight: FontWeight.bold),),
 
               const SizedBox(height: 25,),
 
@@ -58,27 +59,20 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
 
-              const SizedBox(height: 15,),
+              SizedBox(height: 15,),
 
-              // Password text-field
+              // Mobile number text-field
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: TextField(
-                  controller: passwordController,
-                  obscureText: obscurePassword,
+                  controller: OTP_Controller,
+                  obscureText: false,
                   textInputAction: TextInputAction.next,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    hintText: "password".toUpperCase(),
+                    hintText: "otp".toUpperCase(),
                     hintStyle: const TextStyle(fontWeight: FontWeight.w600),
                     prefixIcon: const Icon(Icons.password_outlined),
-                    suffixIcon: GestureDetector(
-                      onTap: (){
-                        setState(() {
-                          obscurePassword = !obscurePassword;
-                        });
-                      },
-                        child: const Icon(Icons.visibility),
-                    ),
                     enabledBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white),
                     ),
@@ -99,59 +93,47 @@ class _LoginPageState extends State<LoginPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPassword(),));
-                      },
-                        child: const Text("Forgot Password",style: TextStyle(color: Colors.blue),)
-                    ),
+                    Text(text_msg.toUpperCase(),),
                   ],
                 ),
               ),
 
-              const SizedBox(height: 15,),
+              const SizedBox(height: 20,),
 
-              // Sign-in
+              // Send OTP
               GestureDetector(
                 onTap: (){
-                  FirebaseAuth.instance.signInWithEmailAndPassword(email: userIdController.text,
-                      password: passwordController.text).then((value) => {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(),)),
-                  }).onError((error, stackTrace) {
-                    return Future.error(Error.safeToString(error));
-                  },);
+                  setState(() {
+                    if(!OTP_sent){
+                      text_msg = "otp sent";
+                      btn_msg = "verify opt";
+                      OTP_sent = true;
+                    }else{
+                      if(varify()){
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+                      }
+                    }
+                  });
                 },
                 child: Container(
                   padding: const EdgeInsets.all(25),
                   margin: const EdgeInsets.symmetric(horizontal: 25),
                   decoration: BoxDecoration(
                       color: Colors.black,
-                    borderRadius: BorderRadius.circular(10)
+                      borderRadius: BorderRadius.circular(10)
                   ),
-                  child: Center(child: Text("sign in".toUpperCase(),style: const TextStyle(color: Colors.white),)),
+                  child: Center(child: Text(btn_msg.toUpperCase(),style: const TextStyle(color: Colors.white),)),
                 ),
-              ),
-
-              const SizedBox(height: 20,),
-
-              // Sign Up
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text("Don't have account ?"),
-                  const SizedBox(width: 4,),
-                  GestureDetector(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage()));
-                    },
-                      child: Text("Sign Up".toUpperCase(),style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.blue),),
-                  ),
-                ],
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  bool varify(){
+
+    return false;
   }
 }

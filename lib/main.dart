@@ -1,8 +1,9 @@
 import 'package:cyber_sathi/Layouts/HomePage.dart';
 import 'package:cyber_sathi/SplashScreen.dart';
+import 'package:cyber_sathi/auth/LoginPage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-
 import 'Constants/Colors.dart';
 import 'Constants/Paddings.dart';
 
@@ -48,7 +49,15 @@ class MyApp extends StatelessWidget {
               borderSide: BorderSide.none,
             ),
           )),
-      home: HomePage(),
+      home: StreamBuilder(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context,snapshot){
+        if(snapshot.hasData){
+          return SplashScreen();
+        }else{
+          return LoginPage();
+        }
+      }),
 
     );
   }
