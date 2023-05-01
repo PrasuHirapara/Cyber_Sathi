@@ -17,20 +17,20 @@ class GoogleSignUp_btn extends StatelessWidget{
             children: [
                Icon(Icons.g_mobiledata_outlined),
 
-               SizedBox(width: 10,),
+                 SizedBox(width: 10,),
 
-               MaterialButton(
-                onPressed: (){
-                  _GoogleSignIn.signIn().then((value) {
-                    String userName = value!.displayName!;
-                    String profilePicture = value!.photoUrl!;
-                  });
-                },
-                child: Text("google sign up".toUpperCase(),style: const TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
-              ),
-            ],
+                 MaterialButton(
+                  onPressed: (){
+                    _GoogleSignIn.signIn().then((value) {
+                      String userName = value!.displayName!;
+                      String profilePicture = value!.photoUrl!;
+                    });
+                  },
+                  child: Text("google sign up".toUpperCase(),style: const TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
+                ),
+              ],
+            ),
           ),
-        ),
     );
   }
 
